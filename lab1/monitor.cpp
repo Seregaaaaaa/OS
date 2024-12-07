@@ -18,6 +18,7 @@ public:
         while (true) {
             this_thread::sleep_for(chrono::seconds(1));
             unique_lock<mutex> lock(mtx);
+            cv.wait(lock, [this] { return !event_occurred; });
             event_occurred = true;
             event += 1;
             cout << "Событие отправлено: " << event << endl;
@@ -39,7 +40,7 @@ int main() {
     Monitor monitor;
     thread producer(&Monitor::produce, &monitor);
     thread receiver(&Monitor::receive, &monitor);
-
+    
     producer.join();
     receiver.join();
 
