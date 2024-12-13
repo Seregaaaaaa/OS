@@ -18,11 +18,12 @@ public:
         while (true) {
             this_thread::sleep_for(chrono::seconds(1));
             unique_lock<mutex> lock(mtx);
-            cv.wait(lock, [this] { return !event_occurred; });
-            event_occurred = true;
-            event += 1;
-            cout << "Событие отправлено: " << event << endl;
-            cv.notify_one();
+            if (!event_occurred) {
+                event_occurred = true;
+                event += 1;
+                cout << "Событие отправлено: " << event << endl;
+                cv.notify_one();
+            }
         }
     }
 
