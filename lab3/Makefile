@@ -1,4 +1,4 @@
-obj-m += tsulab.o
+obj-m += tsu.o
 KERNELDIR ?= /usr/src/linux-headers-$(shell uname -r)
 PWD := $(CURDIR)
 
