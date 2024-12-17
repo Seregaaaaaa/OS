@@ -1,18 +1,9 @@
-obj-m := tsu.o
+obj-m += tsulab.o
+KERNELDIR ?= /lib/modules/$(shell uname -r)/build
+PWD := $(CURDIR)
 
-KDIR := /lib/modules/$(shell uname -r)/build
-
-PWD := $(shell pwd)
-
-all: run test clean
-sudo dmesg | tail -n 4
-run:
-$(MAKE) -C $(KDIR) M=$(PWD) modules
-sudo insmod tsu.ko
-
-test:
-cat /proc/tsulab
+all:
+	$(MAKE) -C $(KERNELDIR) M=$(PWD) modules
 
 clean:
-sudo rmmod tsu
-$(MAKE) -C $(KDIR) M=$(PWD) clean
+	$(MAKE) -C $(KERNELDIR) M=$(PWD) clean

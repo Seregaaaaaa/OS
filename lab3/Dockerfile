@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y \
     linux-headers-generic \
     make
 
-COPY . /usr/src/tsu
-WORKDIR /usr/src/tsu
+COPY . /usr/src/tsulab
+WORKDIR /usr/src/tsulab
 
 CMD ["make"]
