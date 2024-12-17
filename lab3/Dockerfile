@@ -3,9 +3,12 @@ FROM ubuntu:latest
 RUN apt-get update && apt-get install -y \
     build-essential \
     linux-headers-generic \
-    make
+    kmod
 
 COPY . /usr/src/tsulab
+
 WORKDIR /usr/src/tsulab
 
-CMD ["make"]
+RUN make
+
+CMD ["bash"]
