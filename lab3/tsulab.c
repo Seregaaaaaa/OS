@@ -11,7 +11,7 @@ MODULE_LICENSE("GPL");
 static struct proc_dir_entry *proc_file;
 
 static int tsulab_show(struct seq_file *m, void *v) {
-    seq_printf(m, "Welcome to the Tomsk State University\n");
+    seq_printf(m, "Heheehehhehe\n");
     return 0;
 }
 
