@@ -8,6 +8,7 @@ MODULE_LICENSE("GPL");
 
 #define PROC_NAME "tsulab"
 
+// Задание: Вывести сумму чисел ряда Фибоначчи
 static struct proc_dir_entry *proc_file;
 static unsigned long int fib1 = 0, fib2 = 1, Sfib = 0;
 
@@ -50,4 +51,3 @@ module_init(tsu_module_init);
 module_exit(tsu_module_exit);
 
 
-/*Сумма последовательностей чисел фибоначи*/
