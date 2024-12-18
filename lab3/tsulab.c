@@ -19,12 +19,11 @@ static int tsulab_open(struct inode *inode, struct file *file) {
     return single_open(file, tsulab_show, NULL);
 }
 
-static const struct file_operations tsulab_fops = {
-    .owner = THIS_MODULE,
-    .open = tsulab_open,
-    .read = seq_read,
-    .llseek = seq_lseek,
-    .release = single_release,
+static const struct proc_ops tsulab_fops = {
+    .proc_open = tsulab_open,
+    .proc_read = seq_read,
+    .proc_lseek = seq_lseek,
+    .proc_release = single_release,
 };
 
 static int __init tsu_module_init(void) {
