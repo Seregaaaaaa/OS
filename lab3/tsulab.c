@@ -9,10 +9,10 @@ MODULE_LICENSE("GPL");
 #define PROC_NAME "tsulab"
 
 static struct proc_dir_entry *proc_file;
-static int fib1 = 0, fib2 = 1, Sfib = 0;
+static unsigned long int fib1 = 0, fib2 = 1, Sfib = 0;
 
 static int tsulab_show(struct seq_file *m, void *v) {
-    int next_fib = fib1 + fib2;
+    unsigned long int  next_fib = fib1 + fib2;
     Sfib += next_fib;
     fib1 = fib2;
     fib2 = next_fib;
